@@ -3,14 +3,34 @@ const blocks = [
     'https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/9c/Grass_Block_%28side%29_JE2.png',
     'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Dirt_JE2.png',
     'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Stone_JE2.png',
-    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Oak_Log_%28UD%29_JE2.png'
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Oak_Log_%28UD%29_JE2.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Diamond_Ore_JE3.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Gold_Ore_JE3.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Iron_Ore_JE3.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Coal_Ore_JE3.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Emerald_Ore_JE3.png',
+    'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Redstone_Ore_JE3.png'
 ];
 
 // Mob images
 const mobs = {
     creeper: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5a/Creeper_JE3.png',
     zombie: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4d/Zombie_JE3.png',
-    skeleton: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3a/Skeleton_JE3.png'
+    skeleton: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3a/Skeleton_JE3.png',
+    enderman: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3a/Enderman_JE3.png',
+    spider: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4d/Spider_JE3.png',
+    slime: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Slime_JE3.png',
+    witch: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Witch_JE3.png',
+    blaze: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Blaze_JE3.png'
+};
+
+// Items for crafting
+const items = {
+    diamond_sword: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Diamond_Sword_JE3.png',
+    iron_pickaxe: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Iron_Pickaxe_JE3.png',
+    golden_apple: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Golden_Apple_JE3.png',
+    enchanted_book: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Enchanted_Book_JE3.png',
+    ender_pearl: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Ender_Pearl_JE3.png'
 };
 
 // Weather states
@@ -128,6 +148,11 @@ if (craftingSlots.length > 0) {
             }
             selectedSlot = slot;
             slot.style.borderColor = 'var(--minecraft-green)';
+            
+            // Add random item to slot
+            const randomItem = Object.values(items)[Math.floor(Math.random() * Object.values(items).length)];
+            slot.style.backgroundImage = `url(${randomItem})`;
+            slot.style.backgroundSize = 'cover';
         });
     });
 
@@ -137,12 +162,18 @@ if (craftingSlots.length > 0) {
                 const item = document.createElement('div');
                 item.style.width = '50px';
                 item.style.height = '50px';
-                item.style.backgroundImage = `url(${blocks[Math.floor(Math.random() * blocks.length)]})`;
+                item.style.backgroundImage = selectedSlot.style.backgroundImage;
                 item.style.backgroundSize = 'cover';
                 item.style.margin = '0 auto';
                 
                 craftingResult.innerHTML = '';
                 craftingResult.appendChild(item);
+                
+                // Add crafting animation
+                craftingResult.style.animation = 'bounce 0.5s';
+                setTimeout(() => {
+                    craftingResult.style.animation = '';
+                }, 500);
                 
                 // Reset selection
                 selectedSlot.style.borderColor = 'var(--minecraft-dark)';

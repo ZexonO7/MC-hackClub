@@ -20,6 +20,21 @@ body {
     background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Grass_Block_%28top%29_JE2.png');
     background-size: 64px 64px;
     image-rendering: pixelated;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Clouds_JE2.png');
+    background-size: 256px 256px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .minecraft-container {

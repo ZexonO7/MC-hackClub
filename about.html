@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Minecraft World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="minecraft-container">
+        <header>
+            <h1 class="minecraft-title">About Minecraft World</h1>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="about-section">
+                <h2>About This Website</h2>
+                <p>This is a Minecraft-themed website created for Hack Club Waffles. It features various interactive elements inspired by the popular game Minecraft.</p>
+                
+                <div class="crafting-table">
+                    <h3>Crafting Table</h3>
+                    <div class="crafting-grid" id="craftingGrid">
+                        <div class="crafting-slot" data-slot="1"></div>
+                        <div class="crafting-slot" data-slot="2"></div>
+                        <div class="crafting-slot" data-slot="3"></div>
+                        <div class="crafting-slot" data-slot="4"></div>
+                        <div class="crafting-slot" data-slot="5"></div>
+                        <div class="crafting-slot" data-slot="6"></div>
+                        <div class="crafting-slot" data-slot="7"></div>
+                        <div class="crafting-slot" data-slot="8"></div>
+                        <div class="crafting-slot" data-slot="9"></div>
+                    </div>
+                    <div id="craftingResult" class="crafting-result"></div>
+                    <button id="craftBtn" class="minecraft-btn">Craft Item</button>
+                </div>
+
+                <div class="achievement-section">
+                    <h3>Achievements</h3>
+                    <div class="achievement-list">
+                        <div class="achievement" id="achievement1">
+                            <span class="achievement-icon">🏆</span>
+                            <span class="achievement-text">First Visit</span>
+                        </div>
+                        <div class="achievement" id="achievement2">
+                            <span class="achievement-icon">⚔️</span>
+                            <span class="achievement-text">Crafting Master</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-control">
+                    <h3>Weather Control</h3>
+                    <div id="weatherDisplay">Current Weather: Clear</div>
+                    <button id="changeWeatherBtn" class="minecraft-btn">Change Weather</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for Hack Club Waffles</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

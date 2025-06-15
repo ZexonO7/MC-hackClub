@@ -5,79 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visionary Pulse</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="pulse-container">
-        <div class="pulse-ring"></div>
-        <div class="pulse-ring"></div>
-        <div class="pulse-ring"></div>
+    <div class="minecraft-container">
+        <header class="minecraft-header">
+            <div class="logo-container">
+                <h1 class="minecraft-title">Visionary Pulse</h1>
+                <div class="pulse-animation"></div>
+            </div>
+            <nav class="minecraft-nav">
+                <a href="#home" class="minecraft-button">Home</a>
+                <a href="#about" class="minecraft-button">About</a>
+                <a href="#projects" class="minecraft-button">Projects</a>
+                <a href="#contact" class="minecraft-button">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <h2>Welcome to Visionary Pulse</h2>
+                    <p>Where Innovation Meets Imagination</p>
+                    <div class="hero-image">
+                        <img src="images/hero-bg.jpg" alt="Hero Background" class="parallax-image">
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <div class="section-content">
+                    <h2>About Us</h2>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p>We are a team of passionate developers and creators, dedicated to pushing the boundaries of what's possible in the digital world.</p>
+                        </div>
+                        <div class="about-image">
+                            <img src="images/about.jpg" alt="About Us" class="minecraft-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="projects-section">
+                <div class="section-content">
+                    <h2>Our Projects</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <img src="images/project1.jpg" alt="Project 1" class="project-image">
+                            <h3>Project One</h3>
+                            <p>Innovative solutions for modern challenges</p>
+                        </div>
+                        <div class="project-card">
+                            <img src="images/project2.jpg" alt="Project 2" class="project-image">
+                            <h3>Project Two</h3>
+                            <p>Cutting-edge technology implementation</p>
+                        </div>
+                        <div class="project-card">
+                            <img src="images/project3.jpg" alt="Project 3" class="project-image">
+                            <h3>Project Three</h3>
+                            <p>Creative design meets functionality</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <div class="section-content">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-container">
+                        <form class="contact-form">
+                            <input type="text" placeholder="Your Name" class="minecraft-input">
+                            <input type="email" placeholder="Your Email" class="minecraft-input">
+                            <textarea placeholder="Your Message" class="minecraft-input"></textarea>
+                            <button type="submit" class="minecraft-button">Send Message</button>
+                        </form>
+                        <div class="contact-image">
+                            <img src="images/contact.jpg" alt="Contact Us" class="minecraft-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="minecraft-footer">
+            <p>&copy; 2024 Visionary Pulse. All rights reserved.</p>
+        </footer>
     </div>
-
-    <nav class="nav-container">
-        <div class="logo">Visionary Pulse</div>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="#" id="themeToggle">Toggle Theme</a>
-        </div>
-    </nav>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="glitch-text">Visionary Pulse</h1>
-                <p class="subtitle">Where Innovation Meets Imagination</p>
-                <div class="cta-container">
-                    <button class="pulse-button" id="exploreBtn">Explore</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/hero-bg.jpg" alt="Futuristic Technology" class="floating">
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="feature-card" data-tilt>
-                <div class="feature-image">
-                    <img src="images/innovation.jpg" alt="Innovative Thinking">
-                </div>
-                <i class="fas fa-brain"></i>
-                <h3>Innovative Thinking</h3>
-                <p>Pushing boundaries of what's possible</p>
-            </div>
-            <div class="feature-card" data-tilt>
-                <div class="feature-image">
-                    <img src="images/future.jpg" alt="Future Vision">
-                </div>
-                <i class="fas fa-rocket"></i>
-                <h3>Future Vision</h3>
-                <p>Shaping tomorrow's technology</p>
-            </div>
-            <div class="feature-card" data-tilt>
-                <div class="feature-image">
-                    <img src="images/code.jpg" alt="Creative Code">
-                </div>
-                <i class="fas fa-code"></i>
-                <h3>Creative Code</h3>
-                <p>Building digital experiences</p>
-            </div>
-        </section>
-
-        <section class="interactive-demo">
-            <h2>Interactive Pulse</h2>
-            <div class="pulse-generator">
-                <input type="range" id="pulseSpeed" min="1" max="10" value="5">
-                <div id="pulseVisualizer"></div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Created with ❤️ for Hack Club Waffles</p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

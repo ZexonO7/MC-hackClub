@@ -1,0 +1,209 @@
+/* Minecraft-inspired font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --minecraft-green: #44bd32;
+    --minecraft-brown: #8b4513;
+    --minecraft-gray: #808080;
+    --minecraft-dark: #2c2c2c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+}
+
+body {
+    background-color: #87CEEB;
+    background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Grass_Block_%28top%29_JE2.png');
+    background-size: 64px 64px;
+    image-rendering: pixelated;
+}
+
+.minecraft-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-height: 100vh;
+    border: 4px solid var(--minecraft-brown);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--minecraft-green);
+    margin-bottom: 30px;
+    border: 4px solid var(--minecraft-brown);
+}
+
+.minecraft-title {
+    color: white;
+    text-shadow: 3px 3px 0 var(--minecraft-dark);
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: var(--minecraft-brown);
+    border: 3px solid var(--minecraft-dark);
+    transition: transform 0.2s;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-image {
+    width: 200px;
+    height: 200px;
+    image-rendering: pixelated;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background-color: var(--minecraft-gray);
+    padding: 20px;
+    border: 4px solid var(--minecraft-dark);
+    text-align: center;
+}
+
+.minecraft-btn {
+    background-color: var(--minecraft-green);
+    color: white;
+    border: 3px solid var(--minecraft-dark);
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 10px 0;
+}
+
+.minecraft-btn:hover {
+    transform: scale(1.05);
+}
+
+.mob-spawner {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.minecraft-select {
+    background-color: var(--minecraft-gray);
+    color: white;
+    border: 3px solid var(--minecraft-dark);
+    padding: 10px;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* About page specific styles */
+.crafting-table {
+    background-color: var(--minecraft-brown);
+    padding: 20px;
+    margin: 20px 0;
+    border: 4px solid var(--minecraft-dark);
+}
+
+.crafting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.crafting-slot {
+    background-color: var(--minecraft-gray);
+    border: 2px solid var(--minecraft-dark);
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.crafting-result {
+    background-color: var(--minecraft-gray);
+    border: 2px solid var(--minecraft-dark);
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+.achievement-section {
+    margin: 20px 0;
+}
+
+.achievement {
+    background-color: var(--minecraft-gray);
+    padding: 10px;
+    margin: 10px 0;
+    border: 3px solid var(--minecraft-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.achievement-icon {
+    font-size: 1.5em;
+}
+
+.weather-control {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: var(--minecraft-gray);
+    border: 4px solid var(--minecraft-dark);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--minecraft-green);
+    margin-top: 40px;
+    border: 4px solid var(--minecraft-brown);
+}
+
+/* Night mode styles */
+body.night-mode {
+    background-color: #1a1a1a;
+}
+
+body.night-mode .minecraft-container {
+    background-color: rgba(44, 44, 44, 0.9);
+    color: white;
+}
+
+/* Weather effects */
+.rain {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                      url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Grass_Block_%28top%29_JE2.png');
+}
+
+.thunder {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                      url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2d/Grass_Block_%28top%29_JE2.png');
+} 

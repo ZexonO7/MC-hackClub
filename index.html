@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="minecraft-container">
+        <header>
+            <h1 class="minecraft-title">Welcome to Minecraft World</h1>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/9c/Grass_Block_%28side%29_JE2.png" alt="Minecraft Grass Block" class="hero-image" id="heroImage">
+                <h2>Explore the Blocky Universe!</h2>
+                <button id="changeBlockBtn" class="minecraft-btn">Change Block</button>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <h3>Minecraft Blocks</h3>
+                    <div class="block-counter">
+                        <span id="blockCount">0</span> blocks collected
+                    </div>
+                    <button id="collectBlockBtn" class="minecraft-btn">Collect Block</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Minecraft Time</h3>
+                    <div id="gameTime">Day</div>
+                    <button id="toggleTimeBtn" class="minecraft-btn">Toggle Day/Night</button>
+                </div>
+            </section>
+
+            <section class="mob-spawner">
+                <h3>Spawn a Mob</h3>
+                <select id="mobSelect" class="minecraft-select">
+                    <option value="creeper">Creeper</option>
+                    <option value="zombie">Zombie</option>
+                    <option value="skeleton">Skeleton</option>
+                </select>
+                <button id="spawnMobBtn" class="minecraft-btn">Spawn Mob</button>
+                <div id="mobDisplay"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for Hack Club Waffles</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

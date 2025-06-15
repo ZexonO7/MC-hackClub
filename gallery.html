@@ -25,9 +25,145 @@
             background: var(--background-dark);
             color: var(--text-light);
         }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .lightbox-nav button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-color);
+        }
     </style>
 </head>
 <body>
+    <div class="loading-spinner"></div>
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <div class="gallery-container">
         <div class="filter-controls">
             <button class="filter-btn active" data-filter="all">All</button>
@@ -40,7 +176,10 @@
             <!-- Nature Images -->
             <div class="gallery-item" data-category="nature">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?mountain" alt="Mountain Landscape">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop" 
+                         alt="Mountain Landscape"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=1'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-mountain"></i>
@@ -51,7 +190,10 @@
 
             <div class="gallery-item" data-category="nature">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?ocean" alt="Ocean View">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop" 
+                         alt="Ocean View"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=2'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-water"></i>
@@ -63,7 +205,10 @@
             <!-- Architecture Images -->
             <div class="gallery-item" data-category="architecture">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?building" alt="Modern Building">
+                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=600&fit=crop" 
+                         alt="Modern Building"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=3'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-building"></i>
@@ -74,7 +219,10 @@
 
             <div class="gallery-item" data-category="architecture">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?bridge" alt="Bridge">
+                    <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=600&fit=crop" 
+                         alt="Bridge"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=4'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-archway"></i>
@@ -86,7 +234,10 @@
             <!-- Technology Images -->
             <div class="gallery-item" data-category="technology">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?technology" alt="Technology">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop" 
+                         alt="Technology"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=5'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-microchip"></i>
@@ -97,7 +248,10 @@
 
             <div class="gallery-item" data-category="technology">
                 <div class="gallery-image">
-                    <img src="https://source.unsplash.com/800x600/?robot" alt="Robot">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop" 
+                         alt="Robot"
+                         loading="lazy"
+                         onerror="this.src='https://picsum.photos/800/600?random=6'">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-robot"></i>
@@ -108,28 +262,51 @@
         </div>
     </div>
 
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="">
+            <div class="lightbox-caption"></div>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImage = document.querySelector('.lightbox-image');
+            const lightboxCaption = document.querySelector('.lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            const scrollTop = document.querySelector('.scroll-top');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+            let currentImageIndex = 0;
+            let visibleImages = [];
 
+            // Filter functionality
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
                     button.classList.add('active');
 
                     const filterValue = button.getAttribute('data-filter');
+                    visibleImages = [];
 
-                    galleryItems.forEach(item => {
+                    galleryItems.forEach((item, index) => {
                         if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                             item.style.display = 'block';
                             setTimeout(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'scale(1)';
                             }, 100);
+                            visibleImages.push(index);
                         } else {
                             item.style.opacity = '0';
                             item.style.transform = 'scale(0.8)';
@@ -139,6 +316,105 @@
                         }
                     });
                 });
+            });
+
+            // Lightbox functionality
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    const title = item.querySelector('h3').textContent;
+                    const description = item.querySelector('p').textContent;
+                    
+                    currentImageIndex = visibleImages.indexOf(index);
+                    lightboxImage.src = img.src;
+                    lightboxCaption.textContent = `${title} - ${description}`;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Lightbox navigation
+            lightboxPrev.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+                updateLightboxImage();
+            });
+
+            lightboxNext.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+                updateLightboxImage();
+            });
+
+            function updateLightboxImage() {
+                const item = galleryItems[visibleImages[currentImageIndex]];
+                const img = item.querySelector('img');
+                const title = item.querySelector('h3').textContent;
+                const description = item.querySelector('p').textContent;
+                
+                loadingSpinner.style.display = 'block';
+                lightboxImage.style.opacity = '0';
+                
+                lightboxImage.onload = () => {
+                    loadingSpinner.style.display = 'none';
+                    lightboxImage.style.opacity = '1';
+                };
+                
+                lightboxImage.src = img.src;
+                lightboxCaption.textContent = `${title} - ${description}`;
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        lightboxClose.click();
+                        break;
+                    case 'ArrowLeft':
+                        lightboxPrev.click();
+                        break;
+                    case 'ArrowRight':
+                        lightboxNext.click();
+                        break;
+                }
+            });
+
+            // Scroll to top button
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
+
+            scrollTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Lazy loading
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
             });
         });
     </script>

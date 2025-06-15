@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionary Pulse - Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">Visionary Pulse</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="#" id="themeToggle">Toggle Theme</a>
+        </div>
+    </nav>
+
+    <main class="gallery-container">
+        <h1 class="glitch-text">Vision Gallery</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="innovation">
+                <div class="gallery-image">
+                    <img src="images/gallery/tech1.jpg" alt="Future Tech">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Future Tech</h3>
+                    <p>Exploring the boundaries of innovation</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="design">
+                <div class="gallery-image">
+                    <img src="images/gallery/design1.jpg" alt="Creative Design">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Creative Design</h3>
+                    <p>Where art meets technology</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="code">
+                <div class="gallery-image">
+                    <img src="images/gallery/code1.jpg" alt="Digital Dreams">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-code"></i>
+                    <h3>Digital Dreams</h3>
+                    <p>Coding the future</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="innovation">
+                <div class="gallery-image">
+                    <img src="images/gallery/tech2.jpg" alt="AI Vision">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Vision</h3>
+                    <p>The future of artificial intelligence</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="design">
+                <div class="gallery-image">
+                    <img src="images/gallery/design2.jpg" alt="Virtual Reality">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>Virtual Reality</h3>
+                    <p>Immersive experiences</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="code">
+                <div class="gallery-image">
+                    <img src="images/gallery/code2.jpg" alt="Connected World">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Connected World</h3>
+                    <p>Building digital bridges</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="innovation">Innovation</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="code">Code</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Created with ❤️ for Hack Club Waffles</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html> 

@@ -3,67 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Minecraft World</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>About - Modern Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6e00ff;
+            --secondary-color: #00ff9d;
+            --text-light: #ffffff;
+            --background-dark: #1a1a1a;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .about-container {
+            padding: 120px 2rem 4rem;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(110, 0, 255, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .member-role {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="minecraft-container">
-        <header>
-            <h1 class="minecraft-title">About Minecraft World</h1>
-            <nav>
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-            </nav>
-        </header>
+    <nav class="nav-container">
+        <div class="logo">Modern Gallery</div>
+        <div class="nav-links">
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html" class="active">About</a>
+        </div>
+    </nav>
 
-        <main>
-            <section class="about-section">
-                <h2>About This Website</h2>
-                <p>This is a Minecraft-themed website created for Hack Club Waffles. It features various interactive elements inspired by the popular game Minecraft.</p>
-                
-                <div class="crafting-table">
-                    <h3>Crafting Table</h3>
-                    <div class="crafting-grid" id="craftingGrid">
-                        <div class="crafting-slot" data-slot="1"></div>
-                        <div class="crafting-slot" data-slot="2"></div>
-                        <div class="crafting-slot" data-slot="3"></div>
-                        <div class="crafting-slot" data-slot="4"></div>
-                        <div class="crafting-slot" data-slot="5"></div>
-                        <div class="crafting-slot" data-slot="6"></div>
-                        <div class="crafting-slot" data-slot="7"></div>
-                        <div class="crafting-slot" data-slot="8"></div>
-                        <div class="crafting-slot" data-slot="9"></div>
+    <div class="about-container">
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to Our Gallery</h1>
+            <p class="hero-subtitle">Discover the beauty of art and technology through our curated collection of stunning images and interactive experiences.</p>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-paint-brush feature-icon"></i>
+                <h3 class="feature-title">Curated Collection</h3>
+                <p class="feature-description">Carefully selected images that showcase the best of nature, architecture, and technology.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h3 class="feature-title">Responsive Design</h3>
+                <p class="feature-description">Experience our gallery on any device with our fully responsive and mobile-friendly design.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-bolt feature-icon"></i>
+                <h3 class="feature-title">Lightning Fast</h3>
+                <p class="feature-description">Optimized performance with lazy loading and efficient image handling.</p>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 class="hero-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Team Member" class="member-image">
+                    <h3 class="member-name">John Doe</h3>
+                    <p class="member-role">Lead Developer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
-                    <div id="craftingResult" class="crafting-result"></div>
-                    <button id="craftBtn" class="minecraft-btn">Craft Item</button>
                 </div>
 
-                <div class="achievement-section">
-                    <h3>Achievements</h3>
-                    <div class="achievement-list">
-                        <div class="achievement" id="achievement1">
-                            <span class="achievement-icon">🏆</span>
-                            <span class="achievement-text">First Visit</span>
-                        </div>
-                        <div class="achievement" id="achievement2">
-                            <span class="achievement-icon">⚔️</span>
-                            <span class="achievement-text">Crafting Master</span>
-                        </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop" alt="Team Member" class="member-image">
+                    <h3 class="member-name">Jane Smith</h3>
+                    <p class="member-role">UI/UX Designer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
 
-                <div class="weather-control">
-                    <h3>Weather Control</h3>
-                    <div id="weatherDisplay">Current Weather: Clear</div>
-                    <button id="changeWeatherBtn" class="minecraft-btn">Change Weather</button>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="Team Member" class="member-image">
+                    <h3 class="member-name">Mike Johnson</h3>
+                    <p class="member-role">Content Curator</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer>
-            <p>Made with ❤️ for Hack Club Waffles</p>
-        </footer>
+        <section class="contact-section">
+            <h2 class="hero-title">Get in Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Form submission
+            const contactForm = document.querySelector('.contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+
+            // Animate feature cards on scroll
+            const featureCards = document.querySelectorAll('.feature-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            featureCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html> 

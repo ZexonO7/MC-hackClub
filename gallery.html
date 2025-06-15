@@ -3,99 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visionary Pulse - Gallery</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Modern Gallery</title>
     <link rel="stylesheet" href="gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6e00ff;
+            --secondary-color: #00ff9d;
+            --text-light: #ffffff;
+            --background-dark: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background-dark);
+            color: var(--text-light);
+        }
+    </style>
 </head>
 <body>
-    <nav class="nav-container">
-        <div class="logo">Visionary Pulse</div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="gallery.html" class="active">Gallery</a>
-            <a href="#" id="themeToggle">Toggle Theme</a>
+    <div class="gallery-container">
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="nature">Nature</button>
+            <button class="filter-btn" data-filter="architecture">Architecture</button>
+            <button class="filter-btn" data-filter="technology">Technology</button>
         </div>
-    </nav>
 
-    <main class="gallery-container">
-        <h1 class="glitch-text">Vision Gallery</h1>
         <div class="gallery-grid">
-            <div class="gallery-item" data-category="innovation">
+            <!-- Nature Images -->
+            <div class="gallery-item" data-category="nature">
                 <div class="gallery-image">
-                    <img src="images/gallery/tech1.jpg" alt="Future Tech">
+                    <img src="https://source.unsplash.com/800x600/?mountain" alt="Mountain Landscape">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Mountain Majesty</h3>
+                    <p>Breathtaking views of nature's grandeur</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature">
+                <div class="gallery-image">
+                    <img src="https://source.unsplash.com/800x600/?ocean" alt="Ocean View">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-water"></i>
+                    <h3>Ocean Dreams</h3>
+                    <p>Serene waters and endless horizons</p>
+                </div>
+            </div>
+
+            <!-- Architecture Images -->
+            <div class="gallery-item" data-category="architecture">
+                <div class="gallery-image">
+                    <img src="https://source.unsplash.com/800x600/?building" alt="Modern Building">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-building"></i>
+                    <h3>Urban Elegance</h3>
+                    <p>Modern architectural masterpieces</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="architecture">
+                <div class="gallery-image">
+                    <img src="https://source.unsplash.com/800x600/?bridge" alt="Bridge">
+                </div>
+                <div class="item-content">
+                    <i class="fas fa-archway"></i>
+                    <h3>Bridge to Tomorrow</h3>
+                    <p>Engineering marvels that connect worlds</p>
+                </div>
+            </div>
+
+            <!-- Technology Images -->
+            <div class="gallery-item" data-category="technology">
+                <div class="gallery-image">
+                    <img src="https://source.unsplash.com/800x600/?technology" alt="Technology">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-microchip"></i>
-                    <h3>Future Tech</h3>
-                    <p>Exploring the boundaries of innovation</p>
+                    <h3>Digital Future</h3>
+                    <p>Innovation at its finest</p>
                 </div>
             </div>
-            <div class="gallery-item" data-category="design">
+
+            <div class="gallery-item" data-category="technology">
                 <div class="gallery-image">
-                    <img src="images/gallery/design1.jpg" alt="Creative Design">
-                </div>
-                <div class="item-content">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Creative Design</h3>
-                    <p>Where art meets technology</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="code">
-                <div class="gallery-image">
-                    <img src="images/gallery/code1.jpg" alt="Digital Dreams">
-                </div>
-                <div class="item-content">
-                    <i class="fas fa-code"></i>
-                    <h3>Digital Dreams</h3>
-                    <p>Coding the future</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="innovation">
-                <div class="gallery-image">
-                    <img src="images/gallery/tech2.jpg" alt="AI Vision">
+                    <img src="https://source.unsplash.com/800x600/?robot" alt="Robot">
                 </div>
                 <div class="item-content">
                     <i class="fas fa-robot"></i>
-                    <h3>AI Vision</h3>
+                    <h3>AI Revolution</h3>
                     <p>The future of artificial intelligence</p>
                 </div>
             </div>
-            <div class="gallery-item" data-category="design">
-                <div class="gallery-image">
-                    <img src="images/gallery/design2.jpg" alt="Virtual Reality">
-                </div>
-                <div class="item-content">
-                    <i class="fas fa-vr-cardboard"></i>
-                    <h3>Virtual Reality</h3>
-                    <p>Immersive experiences</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="code">
-                <div class="gallery-image">
-                    <img src="images/gallery/code2.jpg" alt="Connected World">
-                </div>
-                <div class="item-content">
-                    <i class="fas fa-network-wired"></i>
-                    <h3>Connected World</h3>
-                    <p>Building digital bridges</p>
-                </div>
-            </div>
         </div>
+    </div>
 
-        <div class="filter-controls">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="innovation">Innovation</button>
-            <button class="filter-btn" data-filter="design">Design</button>
-            <button class="filter-btn" data-filter="code">Code</button>
-        </div>
-    </main>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
 
-    <footer>
-        <p>Created with ❤️ for Hack Club Waffles</p>
-    </footer>
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <script src="gallery.js"></script>
+                    const filterValue = button.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
